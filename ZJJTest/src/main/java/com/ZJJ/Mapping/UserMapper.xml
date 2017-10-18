@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ZJJ.Dao.IUserDao">
+	<resultMap id="BaseResultMap" type="com.ZJJ.POJO.User">
+		<id column="USER_ID" property="userId" jdbcType="VARCHAR" />
+		<result column="DPT_USERID" property="dptUserid" jdbcType="VARCHAR" />
+		<result column="GROUP_ID" property="groupId" jdbcType="VARCHAR" />
+		<result column="USER_REALNAME" property="userRealname"
+			jdbcType="VARCHAR" />
+		<result column="USER_XMPY" property="userXmpy" jdbcType="VARCHAR" />
+		<result column="USER_SEX" property="userSex" jdbcType="CHAR" />
+		<result column="USER_PASSWORD" property="userPassword"
+			jdbcType="VARCHAR" />
+		<result column="USER_FLAG" property="userFlag" jdbcType="CHAR" />
+		<result column="USER_DUTY" property="userDuty" jdbcType="VARCHAR" />
+		<result column="USER_INDEX" property="userIndex" jdbcType="INTEGER" />
+		<result column="USER_SFZ" property="userSfz" jdbcType="VARCHAR" />
+		<result column="USER_SJ1" property="userSj1" jdbcType="VARCHAR" />
+		<result column="USER_SJ2" property="userSj2" jdbcType="VARCHAR" />
+		<result column="USER_SJ3" property="userSj3" jdbcType="VARCHAR" />
+		<result column="USER_LB" property="userLb" jdbcType="VARCHAR" />
+		<result column="USER_MRDWSB" property="userMrdwsb" jdbcType="VARCHAR" />
+		<result column="USER_MODIFY_DATE" property="userModifyDate"
+			jdbcType="CHAR" />
+		<result column="USER_ROLE_NEEDCHANGE" property="userRoleNeedchange"
+			jdbcType="CHAR" />
+		<result column="USER_PHOTO" property="userPhoto" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		USER_ID, DPT_USERID, G_S_USER.GROUP_ID, USER_REALNAME, USER_XMPY, USER_SEX,
+		USER_PASSWORD,
+		USER_FLAG, USER_DUTY, USER_INDEX, USER_SFZ, USER_SJ1, USER_SJ2, USER_SJ3,
+		USER_LB,
+		USER_MRDWSB, USER_MODIFY_DATE, USER_ROLE_NEEDCHANGE, USER_PHOTO
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from G_S_USER
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+		delete from G_S_USER
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</delete>
+	<insert id="insert" parameterType="com.ZJJ.POJO.User">
+		insert into G_S_USER (USER_ID, DPT_USERID, GROUP_ID,
+		USER_REALNAME, USER_XMPY, USER_SEX,
+		USER_PASSWORD, USER_FLAG, USER_DUTY,
+		USER_INDEX, USER_SFZ, USER_SJ1,
+		USER_SJ2, USER_SJ3, USER_LB,
+		USER_MRDWSB, USER_MODIFY_DATE, USER_ROLE_NEEDCHANGE,
+		USER_PHOTO)
+		values (#{userId,jdbcType=VARCHAR}, #{dptUserid,jdbcType=VARCHAR},
+		#{groupId,jdbcType=VARCHAR},
+		#{userRealname,jdbcType=VARCHAR}, #{userXmpy,jdbcType=VARCHAR}, #{userSex,jdbcType=CHAR},
+		#{userPassword,jdbcType=VARCHAR}, #{userFlag,jdbcType=CHAR},
+		#{userDuty,jdbcType=VARCHAR},
+		#{userIndex,jdbcType=INTEGER}, #{userSfz,jdbcType=VARCHAR}, #{userSj1,jdbcType=VARCHAR},
+		#{userSj2,jdbcType=VARCHAR}, #{userSj3,jdbcType=VARCHAR},
+		#{userLb,jdbcType=VARCHAR},
+		#{userMrdwsb,jdbcType=VARCHAR}, #{userModifyDate,jdbcType=CHAR}, #{userRoleNeedchange,jdbcType=CHAR},
+		#{userPhoto,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.ZJJ.POJO.User">
+		insert into G_S_USER
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="dptUserid != null">
+				DPT_USERID,
+			</if>
+			<if test="groupId != null">
+				GROUP_ID,
+			</if>
+			<if test="userRealname != null">
+				USER_REALNAME,
+			</if>
+			<if test="userXmpy != null">
+				USER_XMPY,
+			</if>
+			<if test="userSex != null">
+				USER_SEX,
+			</if>
+			<if test="userPassword != null">
+				USER_PASSWORD,
+			</if>
+			<if test="userFlag != null">
+				USER_FLAG,
+			</if>
+			<if test="userDuty != null">
+				USER_DUTY,
+			</if>
+			<if test="userIndex != null">
+				USER_INDEX,
+			</if>
+			<if test="userSfz != null">
+				USER_SFZ,
+			</if>
+			<if test="userSj1 != null">
+				USER_SJ1,
+			</if>
+			<if test="userSj2 != null">
+				USER_SJ2,
+			</if>
+			<if test="userSj3 != null">
+				USER_SJ3,
+			</if>
+			<if test="userLb != null">
+				USER_LB,
+			</if>
+			<if test="userMrdwsb != null">
+				USER_MRDWSB,
+			</if>
+			<if test="userModifyDate != null">
+				USER_MODIFY_DATE,
+			</if>
+			<if test="userRoleNeedchange != null">
+				USER_ROLE_NEEDCHANGE,
+			</if>
+			<if test="userPhoto != null">
+				USER_PHOTO,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=VARCHAR},
+			</if>
+			<if test="dptUserid != null">
+				#{dptUserid,jdbcType=VARCHAR},
+			</if>
+			<if test="groupId != null">
+				#{groupId,jdbcType=VARCHAR},
+			</if>
+			<if test="userRealname != null">
+				#{userRealname,jdbcType=VARCHAR},
+			</if>
+			<if test="userXmpy != null">
+				#{userXmpy,jdbcType=VARCHAR},
+			</if>
+			<if test="userSex != null">
+				#{userSex,jdbcType=CHAR},
+			</if>
+			<if test="userPassword != null">
+				#{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userFlag != null">
+				#{userFlag,jdbcType=CHAR},
+			</if>
+			<if test="userDuty != null">
+				#{userDuty,jdbcType=VARCHAR},
+			</if>
+			<if test="userIndex != null">
+				#{userIndex,jdbcType=INTEGER},
+			</if>
+			<if test="userSfz != null">
+				#{userSfz,jdbcType=VARCHAR},
+			</if>
+			<if test="userSj1 != null">
+				#{userSj1,jdbcType=VARCHAR},
+			</if>
+			<if test="userSj2 != null">
+				#{userSj2,jdbcType=VARCHAR},
+			</if>
+			<if test="userSj3 != null">
+				#{userSj3,jdbcType=VARCHAR},
+			</if>
+			<if test="userLb != null">
+				#{userLb,jdbcType=VARCHAR},
+			</if>
+			<if test="userMrdwsb != null">
+				#{userMrdwsb,jdbcType=VARCHAR},
+			</if>
+			<if test="userModifyDate != null">
+				#{userModifyDate,jdbcType=CHAR},
+			</if>
+			<if test="userRoleNeedchange != null">
+				#{userRoleNeedchange,jdbcType=CHAR},
+			</if>
+			<if test="userPhoto != null">
+				#{userPhoto,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ZJJ.POJO.User">
+		update G_S_USER
+		<set>
+			<if test="dptUserid != null">
+				DPT_USERID = #{dptUserid,jdbcType=VARCHAR},
+			</if>
+			<if test="groupId != null">
+				GROUP_ID = #{groupId,jdbcType=VARCHAR},
+			</if>
+			<if test="userRealname != null">
+				USER_REALNAME = #{userRealname,jdbcType=VARCHAR},
+			</if>
+			<if test="userXmpy != null">
+				USER_XMPY = #{userXmpy,jdbcType=VARCHAR},
+			</if>
+			<if test="userSex != null">
+				USER_SEX = #{userSex,jdbcType=CHAR},
+			</if>
+			<if test="userPassword != null">
+				USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userFlag != null">
+				USER_FLAG = #{userFlag,jdbcType=CHAR},
+			</if>
+			<if test="userDuty != null">
+				USER_DUTY = #{userDuty,jdbcType=VARCHAR},
+			</if>
+			<if test="userIndex != null">
+				USER_INDEX = #{userIndex,jdbcType=INTEGER},
+			</if>
+			<if test="userSfz != null">
+				USER_SFZ = #{userSfz,jdbcType=VARCHAR},
+			</if>
+			<if test="userSj1 != null">
+				USER_SJ1 = #{userSj1,jdbcType=VARCHAR},
+			</if>
+			<if test="userSj2 != null">
+				USER_SJ2 = #{userSj2,jdbcType=VARCHAR},
+			</if>
+			<if test="userSj3 != null">
+				USER_SJ3 = #{userSj3,jdbcType=VARCHAR},
+			</if>
+			<if test="userLb != null">
+				USER_LB = #{userLb,jdbcType=VARCHAR},
+			</if>
+			<if test="userMrdwsb != null">
+				USER_MRDWSB = #{userMrdwsb,jdbcType=VARCHAR},
+			</if>
+			<if test="userModifyDate != null">
+				USER_MODIFY_DATE = #{userModifyDate,jdbcType=CHAR},
+			</if>
+			<if test="userRoleNeedchange != null">
+				USER_ROLE_NEEDCHANGE = #{userRoleNeedchange,jdbcType=CHAR},
+			</if>
+			<if test="userPhoto != null">
+				USER_PHOTO = #{userPhoto,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ZJJ.POJO.User">
+		update G_S_USER
+		set DPT_USERID = #{dptUserid,jdbcType=VARCHAR},
+		GROUP_ID = #{groupId,jdbcType=VARCHAR},
+		USER_REALNAME = #{userRealname,jdbcType=VARCHAR},
+		USER_XMPY = #{userXmpy,jdbcType=VARCHAR},
+		USER_SEX = #{userSex,jdbcType=CHAR},
+		USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+		USER_FLAG = #{userFlag,jdbcType=CHAR},
+		USER_DUTY = #{userDuty,jdbcType=VARCHAR},
+		USER_INDEX = #{userIndex,jdbcType=INTEGER},
+		USER_SFZ = #{userSfz,jdbcType=VARCHAR},
+		USER_SJ1 = #{userSj1,jdbcType=VARCHAR},
+		USER_SJ2 = #{userSj2,jdbcType=VARCHAR},
+		USER_SJ3 = #{userSj3,jdbcType=VARCHAR},
+		USER_LB = #{userLb,jdbcType=VARCHAR},
+		USER_MRDWSB = #{userMrdwsb,jdbcType=VARCHAR},
+		USER_MODIFY_DATE = #{userModifyDate,jdbcType=CHAR},
+		USER_ROLE_NEEDCHANGE = #{userRoleNeedchange,jdbcType=CHAR},
+		USER_PHOTO = #{userPhoto,jdbcType=VARCHAR}
+		where USER_ID = #{userId,jdbcType=VARCHAR}
+	</update>
+
+	<!-- extra -->
+
+	<select id="query" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from G_S_USER
+	</select>
+
+	<select id="queryById" resultMap="BaseResultMap" >
+		select
+		<include refid="Base_Column_List" />
+		from G_S_USER,G_S_GROUP
+		where G_S_USER.GROUP_ID = G_S_GROUP.GROUP_ID
+		and G_S_USER.GROUP_ID = #{groupId,jdbcType=VARCHAR}
+	</select>
+
+	<!-- 根据条件查找 -->
+	<select id="queryByCondition" resultMap="BaseResultMap" parameterType="com.ZJJ.POJO.Condition">
+		select
+		<include refid="Base_Column_List" />
+		from G_S_USER
+		where
+		<!-- 根据开始时间查找 -->
+		<if test="startTime!=null and  endTime == null and  keyWord == null">
+			USER_MODIFY_DATE &gt; #{startTime}
+		</if>	
+		<!-- 根据结束时间查找 -->
+		<if test="endTime!=null and  startTime==null and  keyWord == null">
+			USER_MODIFY_DATE &lt; #{endTime}
+		</if>	
+		<!-- 根据关键字查找 -->
+		<if test="keyWord!=null and  startTime==null and  endTime == null">
+			USER_ID like concat(concat('%',#{keyWord}),'%')
+		</if>
+		<!-- 根据时间范围查找 -->
+		<if test="startTime!=null  and endTime!=null and  keyWord == null">
+			USER_MODIFY_DATE BETWEEN #{startTime} AND #{endTime}
+		</if>
+		<!-- 根据开始时间和关键字查找 -->
+		<if test="startTime!=null  and endTime==null and  keyWord != null">
+			USER_MODIFY_DATE BETWEEN &gt; #{startTime}
+			and USER_ID like concat(concat('%',#{keyWord}),'%')
+		</if>
+		<!-- 根据结束时间和关键字查找 -->
+		<if test="startTime==null  and endTime!=null and  keyWord != null">
+			USER_MODIFY_DATE BETWEEN &lt; #{endTime}
+			and USER_ID like concat(concat('%',#{keyWord}),'%')
+		</if>
+
+		<!-- 所有条件查询 -->
+		<if test="startTime!=null  and endTime!=null and  keyWord != null">
+			USER_MODIFY_DATE BETWEEN #{startTime} AND #{endTime}
+			and USER_ID like concat(concat('%',#{keyWord}),'%')
+		</if>
+
+	</select>
+
+</mapper>
+

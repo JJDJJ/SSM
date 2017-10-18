@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ZJJ.Dao.IGroupDao">
+	<resultMap id="BaseResultMap" type="com.ZJJ.POJO.Group" >
+    <id column="GROUP_ID" property="groupId" jdbcType="VARCHAR" />
+    <result column="GROUP_NAME" property="groupName" jdbcType="VARCHAR" />
+    <result column="GROUP_BMPY" property="groupBmpy" jdbcType="VARCHAR" />
+    <result column="GROUP_PARENT_ID" property="groupParentId" jdbcType="VARCHAR" />
+    <result column="GROUP_LEVEL" property="groupLevel" jdbcType="SMALLINT" />
+    <result column="GROUP_COMMENT" property="groupComment" jdbcType="VARCHAR" />
+    <result column="GROUP_INDEX" property="groupIndex" jdbcType="INTEGER" />
+    <result column="GROUP_SHOW" property="groupShow" jdbcType="VARCHAR" />
+    <result column="GROUP_BM" property="groupBm" jdbcType="VARCHAR" />
+    <result column="GROUP_DH" property="groupDh" jdbcType="VARCHAR" />
+  </resultMap>
+
+ <sql id="Base_Column_List" >
+    GROUP_ID, GROUP_NAME, GROUP_BMPY, GROUP_PARENT_ID, GROUP_LEVEL, GROUP_COMMENT, GROUP_INDEX, 
+    GROUP_SHOW, GROUP_BM, GROUP_DH
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from G_S_GROUP
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from G_S_GROUP
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ZJJ.POJO.Group" >
+    insert into G_S_GROUP (GROUP_ID, GROUP_NAME, GROUP_BMPY, 
+      GROUP_PARENT_ID, GROUP_LEVEL, GROUP_COMMENT, 
+      GROUP_INDEX, GROUP_SHOW, GROUP_BM, 
+      GROUP_DH)
+    values (#{groupId,jdbcType=VARCHAR}, #{groupName,jdbcType=VARCHAR}, #{groupBmpy,jdbcType=VARCHAR}, 
+      #{groupParentId,jdbcType=VARCHAR}, #{groupLevel,jdbcType=SMALLINT}, #{groupComment,jdbcType=VARCHAR}, 
+      #{groupIndex,jdbcType=INTEGER}, #{groupShow,jdbcType=VARCHAR}, #{groupBm,jdbcType=VARCHAR}, 
+      #{groupDh,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ZJJ.POJO.Group" >
+    insert into G_S_GROUP
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        GROUP_ID,
+      </if>
+      <if test="groupName != null" >
+        GROUP_NAME,
+      </if>
+      <if test="groupBmpy != null" >
+        GROUP_BMPY,
+      </if>
+      <if test="groupParentId != null" >
+        GROUP_PARENT_ID,
+      </if>
+      <if test="groupLevel != null" >
+        GROUP_LEVEL,
+      </if>
+      <if test="groupComment != null" >
+        GROUP_COMMENT,
+      </if>
+      <if test="groupIndex != null" >
+        GROUP_INDEX,
+      </if>
+      <if test="groupShow != null" >
+        GROUP_SHOW,
+      </if>
+      <if test="groupBm != null" >
+        GROUP_BM,
+      </if>
+      <if test="groupDh != null" >
+        GROUP_DH,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="groupId != null" >
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null" >
+        #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupBmpy != null" >
+        #{groupBmpy,jdbcType=VARCHAR},
+      </if>
+      <if test="groupParentId != null" >
+        #{groupParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupLevel != null" >
+        #{groupLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="groupComment != null" >
+        #{groupComment,jdbcType=VARCHAR},
+      </if>
+      <if test="groupIndex != null" >
+        #{groupIndex,jdbcType=INTEGER},
+      </if>
+      <if test="groupShow != null" >
+        #{groupShow,jdbcType=VARCHAR},
+      </if>
+      <if test="groupBm != null" >
+        #{groupBm,jdbcType=VARCHAR},
+      </if>
+      <if test="groupDh != null" >
+        #{groupDh,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ZJJ.POJO.Group" >
+    update G_S_GROUP
+    <set >
+      <if test="groupName != null" >
+        GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="groupBmpy != null" >
+        GROUP_BMPY = #{groupBmpy,jdbcType=VARCHAR},
+      </if>
+      <if test="groupParentId != null" >
+        GROUP_PARENT_ID = #{groupParentId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupLevel != null" >
+        GROUP_LEVEL = #{groupLevel,jdbcType=SMALLINT},
+      </if>
+      <if test="groupComment != null" >
+        GROUP_COMMENT = #{groupComment,jdbcType=VARCHAR},
+      </if>
+      <if test="groupIndex != null" >
+        GROUP_INDEX = #{groupIndex,jdbcType=INTEGER},
+      </if>
+      <if test="groupShow != null" >
+        GROUP_SHOW = #{groupShow,jdbcType=VARCHAR},
+      </if>
+      <if test="groupBm != null" >
+        GROUP_BM = #{groupBm,jdbcType=VARCHAR},
+      </if>
+      <if test="groupDh != null" >
+        GROUP_DH = #{groupDh,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ZJJ.POJO.Group" >
+    update G_S_GROUP
+    set GROUP_NAME = #{groupName,jdbcType=VARCHAR},
+      GROUP_BMPY = #{groupBmpy,jdbcType=VARCHAR},
+      GROUP_PARENT_ID = #{groupParentId,jdbcType=VARCHAR},
+      GROUP_LEVEL = #{groupLevel,jdbcType=SMALLINT},
+      GROUP_COMMENT = #{groupComment,jdbcType=VARCHAR},
+      GROUP_INDEX = #{groupIndex,jdbcType=INTEGER},
+      GROUP_SHOW = #{groupShow,jdbcType=VARCHAR},
+      GROUP_BM = #{groupBm,jdbcType=VARCHAR},
+      GROUP_DH = #{groupDh,jdbcType=VARCHAR}
+    where GROUP_ID = #{groupId,jdbcType=VARCHAR}
+  </update>
+	
+	<!-- extra -->
+	<select id="query"  resultMap="BaseResultMap">
+	SELECT G_S_GROUP.GROUP_ID,G_S_GROUP.GROUP_NAME
+	FROM G_S_GROUP
+	</select>
+	
+</mapper>
